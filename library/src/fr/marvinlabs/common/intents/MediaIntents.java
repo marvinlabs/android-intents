@@ -14,6 +14,19 @@ import android.provider.MediaStore;
 public class MediaIntents {
 
 	/**
+	 * Open the video player to play the given
+	 * 
+	 * @param url
+	 *            The URL of the video to play.
+	 * @return the intent
+	 */
+	public static Intent newPlayVideoIntent(String url) {
+		Intent intent = new Intent(Intent.ACTION_VIEW);
+		intent.setDataAndType(Uri.parse(url), "video/*");
+		return intent;
+	}
+
+	/**
 	 * Creates an intent that will launch a browser (most probably as other apps may handle specific URLs, e.g. YouTube)
 	 * to view the provided URL.
 	 * 
