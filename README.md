@@ -30,3 +30,11 @@ do not hesitate to create your own. Those classes are meant to be simple factori
 - If the intent you are creating is specific to an application (like a particular Twitter client), please put the 
 utility class in a sub-package named after that application.
 
+More info
+---------
+
+- Get some more info and other Android tutorials on our blog: [blog.marvinlabs.com][1]
+- Get to know what MarvinLabs does on our website: [www.marvinlabs.com][2]
+
+  [1]: http://blog.marvinlabs.com
+  [2]: http://www.marvinlabs.com
