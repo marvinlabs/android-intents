@@ -27,6 +27,23 @@ Some rules for contributors:
 - If the intent you are creating does not fit into any of the provided utility classes (EmailIntents, GeoIntents, ...), do not hesitate to create your own. Those classes are meant to be simple factories with only static methods.
 - If the intent you are creating is specific to an application (like a particular Twitter client), please put the utility class in a sub-package named after that application.
 
+License
+-------
+
+Copyright 2013 Vincent Mimoun-Prat
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
 More info
 ---------
 
