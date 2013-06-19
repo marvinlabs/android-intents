@@ -19,6 +19,10 @@ Here are some sample factory methods that will allow you to do some simple thing
 
     `startActivity( GeoIntents.newMapsIntent( "Musée du Louvre 75058 Paris", "Le Louvre" ) );`
 	
+- Open your application on the available market application (be it Google Play, Amazon, ...):
+
+    `startActivity( SystemIntents.newMarketForAppIntent( getApplicationContext() );`
+	
 	
 This project has now been initiated with a few intents but we are looking forward to integrating your own intents to ease each developer's life.
 
@@ -26,6 +30,13 @@ Some rules for contributors:
 
 - If the intent you are creating does not fit into any of the provided utility classes (EmailIntents, GeoIntents, ...), do not hesitate to create your own. Those classes are meant to be simple factories with only static methods.
 - If the intent you are creating is specific to an application (like a particular Twitter client), please put the utility class in a sub-package named after that application.
+
+History
+-------
+
+v1.1 (2013-06-19)
+
+- Added intents to open the app markets
 
 License
 -------
