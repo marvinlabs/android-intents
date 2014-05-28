@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Android-intents by marvinlabs</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Android-intents</h1>
+        <h2>A small library which will save you from writing the same intent creation code again and again for the most simple tasks</h2>
+        <a href="https://github.com/marvinlabs/android-intents" class="button"><small>View project on</small>GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a name="android-intents" class="anchor" href="#android-intents"><span class="octicon octicon-link"></span></a>Android Intents</h1>
+
+<p>A small library which will save you from writing the same intent creation code again and again for the most simple tasks. I found myself writing my own 
+library to create some common intents I was using across projects, so we decided to push that code to a project everyone could contribute to.</p>
+
+<p>Here are some sample factory methods that will allow you to do some simple things:</p>
+
+<ul>
+<li>
+<p>Send emails: </p>
+
+<p><code>startActivity( EmailIntents.newEmailIntent( "me@example.com", "My subject", "Hey there!" ) );</code></p>
+</li>
+<li>
+<p>Use the phone:</p>
+
+<p><code>startActivity( PhoneIntents.newCallNumberIntent( "123456789" ) );</code></p>
+
+<p><code>startActivity( PhoneIntents.newSmsIntent( "123456789", "Hi!" ) );</code></p>
+</li>
+<li>
+<p>Display an address on a map:</p>
+
+<p><code>startActivity( GeoIntents.newMapsIntent( "Musée du Louvre 75058 Paris", "Le Louvre" ) );</code></p>
+</li>
+<li>
+<p>Open your application on the available market application (be it Google Play, Amazon, ...):</p>
+
+<p><code>startActivity( SystemIntents.newMarketForAppIntent( getApplicationContext() );</code></p>
+</li>
+</ul><p>This project has now been initiated with a few intents but we are looking forward to integrating your own intents to ease each developer's life.</p>
+
+<p>Some rules for contributors: </p>
+
+<ul>
+<li>If the intent you are creating does not fit into any of the provided utility classes (EmailIntents, GeoIntents, ...), do not hesitate to create your own. 
+Those classes are meant to be simple factories with only static methods.</li>
+<li>If the intent you are creating is specific to an application (like a particular Twitter client), please put the utility class in a sub-package named after 
+that application.</li>
+</ul><h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>The easiest way to get the library included in your project is by using Gradle. Simply add the following line to your dependencies block:</p>
+
+<pre><code>dependencies {
+    compile 'com.marvinlabs:android-intents:1.2.+@aar'
+}
+</code></pre>
+
+<p>Of course, you can replace the version number by whichever version you need (you can have a look at this repository's tags to know which is the latest).</p>
+
+<h2>
+<a name="about-vincent--marvinlabs" class="anchor" href="#about-vincent--marvinlabs"><span class="octicon octicon-link"></span></a>About Vincent &amp; MarvinLabs</h2>
+
+<p>I am a freelance developer located in Biarritz, France. You can <a href="http://vincentprat.info">have a look at my website</a> to get to know me a little better. If you want to follow me, here are some links:</p>
+
+<ul>
+<li><a href="http://twitter.com/vpratfr">Follow me on Twitter</a></li>
+<li><a href="https://plus.google.com/+VincentPrat">Follow me on Google+</a></li>
+<li><a href="http://www.facebook.com/vpratfr">Follow me on Facebook</a></li>
+</ul><p>MarvinLabs is my digital studio specialised in native mobile applications and web sites. You can <a href="http://www.marvinlabs.com">browse our website</a> to get to know us a little better. If you want to get updates about our work, you can also:</p>
+
+<ul>
+<li><a href="http://twitter.com/marvinlabs">Follow us on Twitter</a></li>
+<li><a href="https://plus.google.com/+Marvinlabs">Follow us on Google+</a></li>
+<li><a href="http://www.facebook.com/studio.marvinlabs">Follow us on Facebook</a></li>
+</ul><h2>
+<a name="change-log" class="anchor" href="#change-log"><span class="octicon octicon-link"></span></a>Change log</h2>
+
+<h3>
+<a name="120-2013-06-19" class="anchor" href="#120-2013-06-19"><span class="octicon octicon-link"></span></a>1.2.0 (2013-06-19)</h3>
+
+<ul>
+<li>Added a demo</li>
+<li>Added Android Studio support</li>
+<li>Added maven repository support</li>
+</ul><h3>
+<a name="11-2013-06-19" class="anchor" href="#11-2013-06-19"><span class="octicon octicon-link"></span></a>1.1 (2013-06-19)</h3>
+
+<ul>
+<li>Added intents to open the app markets</li>
+</ul>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/marvinlabs/android-intents/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/marvinlabs/android-intents/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/marvinlabs/android-intents"></a> is maintained by <a href="https://github.com/marvinlabs">marvinlabs</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
