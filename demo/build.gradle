@@ -1,0 +1,39 @@
+apply plugin: 'android'
+
+ext.signingProperties = getSigningProperties()
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion "19.1.0"
+
+    signingConfigs {
+        release {
+            storeFile file(signingProperties['storeFile'])
+            storePassword signingProperties['storePassword']
+            keyAlias signingProperties['keyAlias']
+            keyPassword signingProperties['keyPassword']
+        }
+    }
+
+    defaultConfig {
+        packageName "com.marvinlabs.intents.demo"
+        minSdkVersion 7
+        targetSdkVersion 19
+        versionCode getAppVersionCode()
+        versionName getAppVersionName()
+    }
+
+    buildTypes {
+        release {
+            runProguard true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            signingConfig signingConfigs.release
+        }
+    }
+}
+
+dependencies {
+    compile project(':library')
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:19.1.0'
+}
