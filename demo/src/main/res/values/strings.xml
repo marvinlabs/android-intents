@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Intents</string>
+    <string name="title_activity_main">Intents</string>
+
+    <string name="dialer">Start dialer</string>
+    <string name="call_number">Call number 123456789</string>
+    <string name="dial_number">Dial number 123456789</string>
+    <string name="send_sms_to">Send SMS to 123456789</string>
+    <string name="send_sms">Send SMS</string>
+
+    <string name="map_of">Map of Le Louvre, Paris</string>
+
+    <string name="play_video">Play a video</string>
+    <string name="browse_web">Browse http://vincentprat.info</string>
+    <string name="take_pic">Take a photo</string>
+    <string name="select_pic">Select a picture</string>
+
+    <string name="email_to">Send email</string>
+
+    <string name="share">Share</string>
+    <string name="share_dialog_title">Share this!</string>
+
+    <string name="app_store">Open app store</string>
+</resources>
