@@ -11,6 +11,9 @@
     <string name="send_sms">Send SMS</string>
 
     <string name="map_of">Map of Le Louvre, Paris</string>
+    <string name="map_at">Map at 43.481055, -1.561959</string>
+    <string name="navigate_to_address">Navigate to Le Louvre, Paris</string>
+    <string name="navigate_to_location">Navigate to 43.481055, -1.561959</string>
 
     <string name="play_video">Play a video</string>
     <string name="browse_web">Browse http://vincentprat.info</string>
