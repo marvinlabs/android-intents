@@ -22,7 +22,6 @@ import com.marvinlabs.intents.PhoneIntents;
 import com.marvinlabs.intents.ShareIntents;
 import com.marvinlabs.intents.SystemIntents;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,6 +65,9 @@ public class IntentItemFragment extends Fragment implements AbsListView.OnItemCl
 
         // GeoIntents
         intents.add(new DemoItem(res.getString(R.string.map_of), GeoIntents.newMapsIntent("1 rue du louvre 75000 Paris", "Le Louvre, Paris")));
+        intents.add(new DemoItem(res.getString(R.string.map_at), GeoIntents.newMapsIntent(43.481055f, -1.561959f)));
+        intents.add(new DemoItem(res.getString(R.string.navigate_to_address), GeoIntents.newNavigationIntent("1 rue du louvre 75000 Paris")));
+        intents.add(new DemoItem(res.getString(R.string.navigate_to_location), GeoIntents.newNavigationIntent(43.481055f, -1.561959f)));
 
         // MediaIntents
         intents.add(new DemoItem(res.getString(R.string.play_video), MediaIntents.newPlayVideoIntent("https://www.youtube.com/watch?v=b_yiWIXBI7o")));
