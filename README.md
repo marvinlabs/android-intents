@@ -4,7 +4,8 @@ Android Intents
 A small library which will save you from writing the same intent creation code again and again for the most simple tasks. I found myself writing my own 
 library to create some common intents I was using across projects, so we decided to push that code to a project everyone could contribute to.
 
-Here are some sample factory methods that will allow you to do some simple things:
+You can find a comprehensive list of all intents that can be used in the sample application. Here are some sample methods to show you how to do some 
+simple things:
 
 - Send emails: 
 
@@ -19,6 +20,10 @@ Here are some sample factory methods that will allow you to do some simple thing
 - Display an address on a map:
 
     `startActivity( GeoIntents.newMapsIntent( "Musée du Louvre 75058 Paris", "Le Louvre" ) );`
+	
+- Open the navigation app for a destination:
+
+    `startActivity( GeoIntents.newNavigationIntent( "1 rue du Louvre 75058 Paris, France" ) );`
 	
 - Open your application on the available market application (be it Google Play, Amazon, ...):
 
@@ -39,7 +44,7 @@ that application.
 The easiest way to get the library included in your project is by using Gradle. Simply add the following line to your dependencies block:
 
     dependencies {
-        compile 'com.marvinlabs:android-intents:1.2.+@aar'
+        compile 'com.marvinlabs:android-intents:1.3.+@aar'
     }
     
 Of course, you can replace the version number by whichever version you need (you can have a look at this repository's tags to know which is the latest).
@@ -60,12 +65,17 @@ MarvinLabs is my digital studio specialised in native mobile applications and we
 
 ## Change log
 
+### 1.3.0 (2013-06-23)
+
+- [New] "map" intent on coordinates
+- [New] "navigate to" intents
+
 ### 1.2.0 (2013-06-19)
 
-- Added a demo
-- Added Android Studio support
-- Added maven repository support
+- [New] a demo
+- [New] Android Studio support
+- [New] maven repository support
 
 ### 1.1 (2013-06-19)
 
-- Added intents to open the app markets
+- [New] intents to open the app markets
