@@ -29,6 +29,8 @@ public class MainActivity extends ActionBarActivity implements IntentItemFragmen
 
     @Override
     public void onFragmentInteraction(Intent intent) {
-        startActivity(intent);
+        if(intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
     }
 }
