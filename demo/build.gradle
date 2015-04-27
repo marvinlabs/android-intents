@@ -1,33 +1,26 @@
-apply plugin: 'android'
-
-ext.signingProperties = getSigningProperties()
+apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 19
-    buildToolsVersion "19.1.0"
-
-    signingConfigs {
-        release {
-            storeFile file(signingProperties['storeFile'])
-            storePassword signingProperties['storePassword']
-            keyAlias signingProperties['keyAlias']
-            keyPassword signingProperties['keyPassword']
-        }
-    }
+    compileSdkVersion Integer.parseInt(BUILD_SDK_VERSION)
+    buildToolsVersion BUILD_TOOLS_VERSION
 
     defaultConfig {
-        packageName "com.marvinlabs.intents.demo"
-        minSdkVersion 7
-        targetSdkVersion 19
-        versionCode getAppVersionCode()
-        versionName getAppVersionName()
+        applicationId APP_ID
+        minSdkVersion Integer.parseInt(APP_SDK_MIN)
+        targetSdkVersion Integer.parseInt(APP_SDK_TARGET)
+        versionCode getProjectVersionCode()
+        versionName getProjectVersionName()
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
     }
 
     buildTypes {
         release {
-            runProguard true
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
-            signingConfig signingConfigs.release
         }
     }
 }
@@ -35,5 +28,7 @@ android {
 dependencies {
     compile project(':library')
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:19.1.0'
+    compile 'com.android.support:appcompat-v7:22.1.1'
 }
+
+apply from: "$rootDir/gradle/signing.gradle";
