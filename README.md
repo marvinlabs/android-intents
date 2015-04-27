@@ -17,9 +17,13 @@ simple things:
 	
     `startActivity( PhoneIntents.newSmsIntent( "123456789", "Hi!" ) );`
 	
-- Display an address on a map:
+- Display a location on a map:
 
     `startActivity( GeoIntents.newMapsIntent( "Musée du Louvre 75058 Paris", "Le Louvre" ) );`
+
+    `startActivity( GeoIntents.newMapsIntent( 43.481055f, -1.561959f ) );`
+
+    `startActivity( GeoIntents.newStreetViewIntent( 43.481055f, -1.561959f ) );`
 	
 - Open the navigation app for a destination:
 
