@@ -18,6 +18,7 @@ package com.marvinlabs.intents;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.text.TextUtils;
 
 /**
  * Provides factory methods to create intents to work with geographical data (search locations for instance)
@@ -55,6 +56,18 @@ public class GeoIntents {
      * @return the intent
      */
     public static Intent newMapsIntent(float latitude, float longitude) {
+        return newMapsIntent(latitude, longitude, null);
+    }
+
+    /**
+     * Intent that should allow opening a map showing the given location (if it exists)
+     *
+     * @param latitude  The latitude of the center of the map
+     * @param longitude The longitude of the center of the map
+     * @param placeName The name to show on the marker
+     * @return the intent
+     */
+    public static Intent newMapsIntent(float latitude, float longitude, String placeName) {
         StringBuilder sb = new StringBuilder();
         sb.append("geo:");
 
@@ -62,8 +75,19 @@ public class GeoIntents {
         sb.append(",");
         sb.append(longitude);
 
+        if (!TextUtils.isEmpty(placeName)) {
+            sb.append("?q=");
+            sb.append(latitude);
+            sb.append(",");
+            sb.append(longitude);
+            sb.append("(");
+            sb.append(Uri.encode(placeName.replace(" ", "+")));
+            sb.append(")");
+        }
+
         return new Intent(Intent.ACTION_VIEW, Uri.parse(sb.toString()));
     }
+
 
     /**
      * Intent that should allow opening a map showing the given address (if it exists)
