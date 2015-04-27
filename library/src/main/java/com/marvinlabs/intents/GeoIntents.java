@@ -81,7 +81,7 @@ public class GeoIntents {
             sb.append(",");
             sb.append(longitude);
             sb.append("(");
-            sb.append(Uri.encode(placeName.replace(" ", "+")));
+            sb.append(Uri.encode(placeName));
             sb.append(")");
         }
 
