@@ -9,6 +9,8 @@
     <string name="dial_number">Dial number 123456789</string>
     <string name="send_sms_to">Send SMS to 123456789</string>
     <string name="send_sms">Send SMS</string>
+    <string name="pick_contact">Pick a contact</string>
+    <string name="pick_contact_with_phone">Pick a contact with phone</string>
 
     <string name="map_of">Map of Le Louvre, Paris</string>
     <string name="map_at">Map at 43.481055, -1.561959</string>
@@ -16,7 +18,10 @@
     <string name="navigate_to_location">Navigate to 43.481055, -1.561959</string>
     <string name="streetview_at_location">Street view at 43.481055, -1.561959</string>
 
-    <string name="play_video">Play a video</string>
+    <string name="play_image">Show an image from URL</string>
+    <string name="play_audio">Play a sound from URL</string>
+    <string name="play_video">Play a video from URL</string>
+    <string name="play_video_youtube">Play YouTube video #b_yiWIXBI7o</string>
     <string name="browse_web">Browse http://vincentprat.info</string>
     <string name="take_pic">Take a photo</string>
     <string name="select_pic">Select a picture</string>

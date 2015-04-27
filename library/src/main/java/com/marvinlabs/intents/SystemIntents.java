@@ -103,4 +103,21 @@ public class SystemIntents {
 
         return intent;
     }
+
+    /**
+     * Pick file from sdcard with file manager. Chosen file can be obtained from Intent in onActivityResult.
+     * See code below for example:
+     * <p/>
+     * <pre><code>
+     *     @Override
+     *     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+     *         Uri file = data.getData();
+     *     }
+     * </code></pre>
+     */
+    public static Intent newPickFileIntent() {
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.setType("file/*");
+        return intent;
+    }
 }

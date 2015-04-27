@@ -62,6 +62,8 @@ public class IntentItemFragment extends Fragment implements AbsListView.OnItemCl
         intents.add(new DemoItem(res.getString(R.string.dial_number), PhoneIntents.newDialNumberIntent("+123456789")));
         intents.add(new DemoItem(res.getString(R.string.send_sms_to), PhoneIntents.newSmsIntent("+123456789", "this is a test SMS")));
         intents.add(new DemoItem(res.getString(R.string.send_sms), PhoneIntents.newSmsIntent("this is a test SMS")));
+        intents.add(new DemoItem(res.getString(R.string.pick_contact), PhoneIntents.newPickContactIntent()));
+        intents.add(new DemoItem(res.getString(R.string.pick_contact_with_phone), PhoneIntents.newPickContactWithPhoneIntent()));
 
         // GeoIntents
         intents.add(new DemoItem(res.getString(R.string.map_of), GeoIntents.newMapsIntent("1 rue du louvre 75000 Paris", "Le Louvre, Paris")));
@@ -71,7 +73,10 @@ public class IntentItemFragment extends Fragment implements AbsListView.OnItemCl
         intents.add(new DemoItem(res.getString(R.string.streetview_at_location), GeoIntents.newStreetViewIntent(43.481055f, -1.561959f)));
 
         // MediaIntents
-        intents.add(new DemoItem(res.getString(R.string.play_video), MediaIntents.newPlayVideoIntent("https://www.youtube.com/watch?v=b_yiWIXBI7o")));
+        intents.add(new DemoItem(res.getString(R.string.play_image), MediaIntents.newPlayImageIntent("http://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Biarritz-Plage.JPG/1920px-Biarritz-Plage.JPG")));
+        intents.add(new DemoItem(res.getString(R.string.play_audio), MediaIntents.newPlayAudioIntent("http://www.stephaniequinn.com/Music/Allegro%20from%20Duet%20in%20C%20Major.mp3")));
+        intents.add(new DemoItem(res.getString(R.string.play_video), MediaIntents.newPlayVideoIntent("http://mirror.bigbuckbunny.de/peach/bigbuckbunny_movies/big_buck_bunny_480p_h264.mov")));
+        intents.add(new DemoItem(res.getString(R.string.play_video_youtube), MediaIntents.newPlayYouTubeVideoIntent("b_yiWIXBI7o")));
         intents.add(new DemoItem(res.getString(R.string.browse_web), MediaIntents.newOpenWebBrowserIntent("http://vincentprat.info")));
         intents.add(new DemoItem(res.getString(R.string.take_pic), MediaIntents.newTakePictureIntent(Environment.getExternalStorageDirectory().toString() + "/temp.jpg")));
         intents.add(new DemoItem(res.getString(R.string.select_pic), MediaIntents.newSelectPictureIntent()));

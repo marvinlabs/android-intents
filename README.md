@@ -7,32 +7,55 @@ library to create some common intents I was using across projects, so we decided
 You can find a comprehensive list of all intents that can be used in the sample application. Here are some sample methods to show you how to do some 
 simple things:
 
-- Send emails: 
+- Email intents:
 
-    `startActivity( EmailIntents.newEmailIntent( "me@example.com", "My subject", "Hey there!" ) );`
+    `EmailIntents.newEmailIntent( "me@example.com", "My subject", "Hey there!" )`
 
-- Use the phone:
+- Phone intents:
 
-    `startActivity( PhoneIntents.newCallNumberIntent( "123456789" ) );`
+    `PhoneIntents.newDialNumberIntent(null)`
+
+    `PhoneIntents.newCallNumberIntent("+123456789")`
+
+    `PhoneIntents.newDialNumberIntent("+123456789")`
+
+    `PhoneIntents.newSmsIntent("+123456789", "this is a test SMS")`
+
+    `PhoneIntents.newSmsIntent("this is a test SMS")`
+
+    `PhoneIntents.newPickContactIntent()`
+
+    `PhoneIntents.newPickContactWithPhoneIntent()`
 	
-    `startActivity( PhoneIntents.newSmsIntent( "123456789", "Hi!" ) );`
+- Geo intents:
+
+    `GeoIntents.newMapsIntent( "Musée du Louvre 75058 Paris", "Le Louvre" )`
+
+    `GeoIntents.newMapsIntent( 43.481055f, -1.561959f, "My label for that place" )`
+
+    `GeoIntents.newStreetViewIntent( 43.481055f, -1.561959f )`
+
+    `GeoIntents.newNavigationIntent( "1 rue du Louvre 75058 Paris, France" )`
 	
-- Display a location on a map:
+- System intents:
 
-    `startActivity( GeoIntents.newMapsIntent( "Musée du Louvre 75058 Paris", "Le Louvre" ) );`
+    `SystemIntents.newMarketForAppIntent( getApplicationContext() )`
 
-    `startActivity( GeoIntents.newMapsIntent( 43.481055f, -1.561959f ) );`
+- Media intents:
 
-    `startActivity( GeoIntents.newStreetViewIntent( 43.481055f, -1.561959f ) );`
-	
-- Open the navigation app for a destination:
+    `MediaIntents.newPlayYouTubeVideoIntent("b_yiWIXBI7o")`
 
-    `startActivity( GeoIntents.newNavigationIntent( "1 rue du Louvre 75058 Paris, France" ) );`
-	
-- Open your application on the available market application (be it Google Play, Amazon, ...):
+	`MediaIntents.newPlayImageIntent("http://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Biarritz-Plage.JPG/1920px-Biarritz-Plage.JPG")`
 
-    `startActivity( SystemIntents.newMarketForAppIntent( getApplicationContext() );`
-	
+    `MediaIntents.newPlayAudioIntent("http://www.stephaniequinn.com/Music/Allegro%20from%20Duet%20in%20C%20Major.mp3")`
+
+    `MediaIntents.newPlayVideoIntent("https://www.youtube.com/watch?v=b_yiWIXBI7o")`
+
+    `MediaIntents.newOpenWebBrowserIntent("http://vincentprat.info")`
+
+    `MediaIntents.newTakePictureIntent(Environment.getExternalStorageDirectory().toString() + "/temp.jpg")`
+
+    `MediaIntents.newSelectPictureIntent()`
 	
 This project has now been initiated with a few intents but we are looking forward to integrating your own intents to ease each developer's life.
 
@@ -48,26 +71,20 @@ that application.
 The easiest way to get the library included in your project is by using Gradle. Simply add the following line to your dependencies block:
 
     dependencies {
-        compile 'com.marvinlabs:android-intents:1.3.+@aar'
+        compile 'com.marvinlabs:android-intents:1.4.0@aar'
     }
     
 Of course, you can replace the version number by whichever version you need (you can have a look at this repository's tags to know which is the latest).
 
-## About Vincent & MarvinLabs
-
-I am a freelance developer located in Biarritz, France. You can [have a look at my website](http://vincentprat.info) to get to know me a little better. If you want to follow me, here are some links:
-
-* [Follow me on Twitter](http://twitter.com/vpratfr)
-* [Follow me on Google+](https://plus.google.com/+VincentPrat)
-* [Follow me on Facebook](http://www.facebook.com/vpratfr)
-
-MarvinLabs is my digital studio specialised in native mobile applications and web sites. You can [browse our website](http://www.marvinlabs.com) to get to know us a little better. If you want to get updates about our work, you can also:
-
-* [Follow us on Twitter](http://twitter.com/marvinlabs)
-* [Follow us on Google+](https://plus.google.com/+Marvinlabs)
-* [Follow us on Facebook](http://www.facebook.com/studio.marvinlabs)
-
 ## Change log
+
+### 1.4.0 (2015-04-27)
+
+- [New] pick contacts
+- [New] open youtube video
+- [New] media intents to open video, audio and image
+- [New] "map" intent can now have a label
+- [New] refactored the build scripts
 
 ### 1.3.0 (2013-06-23)
 

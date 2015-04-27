@@ -18,6 +18,10 @@ package com.marvinlabs.intents;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
+import android.provider.Contacts;
+import android.provider.ContactsContract;
+import android.text.TextUtils;
 
 /**
  * Provides factory methods to create intents to send SMS, MMS and call phone numbers
@@ -89,5 +93,68 @@ public class PhoneIntents {
             intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phoneNumber.replace(" ", "")));
         }
         return intent;
+    }
+
+    /**
+     * Pick contact from phone book
+     */
+    public static Intent newPickContactIntent() {
+        return newPickContactIntent(null);
+    }
+
+    /**
+     * Pick contact from phone book
+     * <p/>
+     * Examples:
+     * <p/>
+     * <code><pre>
+     *     // Select only from users with emails
+     *     IntentUtils.pickContact(ContactsContract.CommonDataKinds.Email.CONTENT_TYPE);
+     * <p/>
+     *     // Select only from users with phone numbers on pre Eclair devices
+     *     IntentUtils.pickContact(Contacts.Phones.CONTENT_TYPE);
+     * <p/>
+     *     // Select only from users with phone numbers on devices with Eclair and higher
+     *     IntentUtils.pickContact(ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE);
+     * </pre></code>
+     *
+     * @param scope You can restrict selection by passing required content type.
+     */
+    @SuppressWarnings("deprecation")
+    public static Intent newPickContactIntent(String scope) {
+        Intent intent;
+        if (isContacts2ApiSupported()) {
+            intent = new Intent(Intent.ACTION_PICK, Uri.parse("content://com.android.contacts/contacts"));
+        } else {
+            intent = new Intent(Intent.ACTION_PICK, Contacts.People.CONTENT_URI);
+        }
+
+        if (!TextUtils.isEmpty(scope)) {
+            intent.setType(scope);
+        }
+
+        return intent;
+    }
+
+    /**
+     * Pick contact only from contacts with telephone numbers
+     */
+    @SuppressWarnings("deprecation")
+    public static Intent newPickContactWithPhoneIntent() {
+        Intent intent;
+        if (isContacts2ApiSupported()) {
+            intent = newPickContactIntent(ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE);
+        } else {
+        // pre Eclair, use old contacts API
+            intent = newPickContactIntent(Contacts.Phones.CONTENT_TYPE);
+        }
+        return intent;
+    }
+
+    /**
+     * Does the current device support the Post eclair contacts API?
+     */
+    private static boolean isContacts2ApiSupported() {
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.ECLAIR;
     }
 }
