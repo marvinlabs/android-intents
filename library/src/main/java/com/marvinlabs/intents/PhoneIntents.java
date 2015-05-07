@@ -16,11 +16,13 @@ limitations under the License.
 
 package com.marvinlabs.intents;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.Contacts;
 import android.provider.ContactsContract;
+import android.provider.Telephony;
 import android.text.TextUtils;
 
 /**
@@ -34,27 +36,69 @@ public class PhoneIntents {
     /**
      * Creates an intent that will allow to send an SMS without specifying the phone number
      *
+     * @return the intent
+     */
+    public static Intent newEmptySmsIntent(Context context) {
+        return newSmsIntent(context, null, (String[]) null);
+    }
+
+    /**
+     * Creates an intent that will allow to send an SMS without specifying the phone number
+     *
+     * @param phoneNumber The phone number to send the SMS to
+     * @return the intent
+     */
+    public static Intent newEmptySmsIntent(Context context, String phoneNumber) {
+        return newSmsIntent(context, null, new String[]{phoneNumber});
+    }
+
+    /**
+     * Creates an intent that will allow to send an SMS without specifying the phone number
+     *
+     * @param phoneNumbers The phone numbers to send the SMS to
+     * @return the intent
+     */
+    public static Intent newEmptySmsIntent(Context context, String[] phoneNumbers) {
+        return newSmsIntent(context, null, phoneNumbers);
+    }
+
+    /**
+     * Creates an intent that will allow to send an SMS without specifying the phone number
+     *
      * @param body The text to send
      * @return the intent
      */
-    public static Intent newSmsIntent(String body) {
-        return newSmsIntent(null, body);
+    public static Intent newSmsIntent(Context context, String body) {
+        return newSmsIntent(context, body, (String[]) null);
     }
+
+    /**
+     * Creates an intent that will allow to send an SMS without specifying the phone number
+     *
+     * @param body The text to send
+     * @param phoneNumber The phone number to send the SMS to
+     * @return the intent
+     */
+    public static Intent newSmsIntent(Context context, String body, String phoneNumber) {
+        return newSmsIntent(context, body, new String[]{phoneNumber});
+    }
+
 
     /**
      * Creates an intent that will allow to send an SMS to a phone number
      *
-     * @param phoneNumber The phone number to send the SMS to (or null if you don't want to specify it)
-     * @param body        The text to send
+     * @param body         The text to send
+     * @param phoneNumbers The phone numbers to send the SMS to (or null if you don't want to specify it)
      * @return the intent
      */
-    public static Intent newSmsIntent(String body, String... phoneNumber) {
+    public static Intent newSmsIntent(Context context, String body, String[] phoneNumbers) {
         Uri smsUri;
-        if (phoneNumber == null) {
+        if (phoneNumbers == null || phoneNumbers.length==0) {
             smsUri = Uri.parse("smsto:");
         } else {
-            smsUri = Uri.parse("smsto:" + Uri.encode(TextUtils.join(",", phoneNumber)));
+            smsUri = Uri.parse("smsto:" + Uri.encode(TextUtils.join(",", phoneNumbers)));
         }
+
         Intent intent;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             intent = new Intent(Intent.ACTION_SENDTO, smsUri);
@@ -62,7 +106,11 @@ public class PhoneIntents {
         } else {
             intent = new Intent(Intent.ACTION_VIEW, smsUri);
         }
-        intent.putExtra("sms_body", body);
+
+        if (body!=null) {
+            intent.putExtra("sms_body", body);
+        }
+
         return intent;
     }
 
@@ -152,7 +200,7 @@ public class PhoneIntents {
         if (isContacts2ApiSupported()) {
             intent = newPickContactIntent(ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE);
         } else {
-        // pre Eclair, use old contacts API
+            // pre Eclair, use old contacts API
             intent = newPickContactIntent(Contacts.Phones.CONTENT_TYPE);
         }
         return intent;

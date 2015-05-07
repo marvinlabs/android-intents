@@ -60,8 +60,8 @@ public class IntentItemFragment extends Fragment implements AbsListView.OnItemCl
         intents.add(new DemoItem(res.getString(R.string.dialer), PhoneIntents.newDialNumberIntent(null)));
         intents.add(new DemoItem(res.getString(R.string.call_number), PhoneIntents.newCallNumberIntent("+123456789")));
         intents.add(new DemoItem(res.getString(R.string.dial_number), PhoneIntents.newDialNumberIntent("+123456789")));
-        intents.add(new DemoItem(res.getString(R.string.send_sms_to), PhoneIntents.newSmsIntent("+123456789", "this is a test SMS")));
-        intents.add(new DemoItem(res.getString(R.string.send_sms), PhoneIntents.newSmsIntent("this is a test SMS")));
+        intents.add(new DemoItem(res.getString(R.string.send_sms_to), PhoneIntents.newSmsIntent(getActivity(), "this is a test SMS", "+123456789", "+987654321")));
+        intents.add(new DemoItem(res.getString(R.string.send_sms), PhoneIntents.newSmsIntent(getActivity(), "this is a test SMS")));
         intents.add(new DemoItem(res.getString(R.string.pick_contact), PhoneIntents.newPickContactIntent()));
         intents.add(new DemoItem(res.getString(R.string.pick_contact_with_phone), PhoneIntents.newPickContactWithPhoneIntent()));
 
