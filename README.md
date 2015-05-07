@@ -78,7 +78,7 @@ Of course, you can replace the version number by whichever version you need (you
 
 ## Change log
 
-### 1.4.1 (2015-05-07)
+### 1.5.0 (2015-05-07)
 
 - [New] allow multiple numbers in send SMS intent
 - [Fix] Honor default sms package on API > 19
