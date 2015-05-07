@@ -48,12 +48,19 @@ public class PhoneIntents {
      * @param body        The text to send
      * @return the intent
      */
-    public static Intent newSmsIntent(String phoneNumber, String body) {
-        final Intent intent;
-        if (phoneNumber == null || phoneNumber.trim().length() <= 0) {
-            intent = new Intent(Intent.ACTION_VIEW, Uri.parse("sms:"));
+    public static Intent newSmsIntent(String body, String... phoneNumber) {
+        Uri smsUri;
+        if (phoneNumber == null) {
+            smsUri = Uri.parse("smsto:");
         } else {
-            intent = new Intent(Intent.ACTION_VIEW, Uri.parse("sms:" + phoneNumber));
+            smsUri = Uri.parse("smsto:" + Uri.encode(TextUtils.join(",", phoneNumber)));
+        }
+        Intent intent;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            intent = new Intent(Intent.ACTION_SENDTO, smsUri);
+            intent.setPackage(Telephony.Sms.getDefaultSmsPackage(context));
+        } else {
+            intent = new Intent(Intent.ACTION_VIEW, smsUri);
         }
         intent.putExtra("sms_body", body);
         return intent;
