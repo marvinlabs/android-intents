@@ -31,6 +31,7 @@ Thumbs.db
 .gradle
 build/
 .idea/workspace.xml
+**/*.iml
 
 # Proguard temp
 proguard/dump.txt
