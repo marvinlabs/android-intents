@@ -29,6 +29,11 @@ public class MainActivity extends ActionBarActivity implements IntentItemFragmen
 
     @Override
     public void onFragmentInteraction(Intent intent) {
-        startActivity(intent);
+        try{
+            startActivity(intent);
+        }catch(ClassNotFoundException e)
+        {
+            Toast.makeText(getApplicationContext(), "Error, try again later", Toast.LENGTH_LONG).show();
+        }
     }
 }
